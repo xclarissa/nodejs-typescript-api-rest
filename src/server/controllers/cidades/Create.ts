@@ -5,7 +5,6 @@ import { CidadesProvider } from '../../database/providers/cidades';
 import { validation } from '../../shared/middleware';
 import { ICidade } from '../../database/models';
 
-
 interface IBodyProps extends Omit<ICidade, 'id'> { }
 
 export const createValidation = validation((getSchema) => ({
