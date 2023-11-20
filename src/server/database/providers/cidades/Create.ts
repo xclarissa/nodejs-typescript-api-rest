@@ -12,7 +12,7 @@ export const create = async (cidade: Omit<ICidade, 'id'>): Promise<number | Erro
       return result;
     }
 
-    return new Error('Erro ao cadastrar registro');
+    return new Error('Erro ao cadastrar cidade');
 
   } catch (error) {
     console.log(error);
