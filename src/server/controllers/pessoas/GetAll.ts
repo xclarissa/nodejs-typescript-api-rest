@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import * as yup from 'yup';
-import { PessoaProvider } from '../../database/providers/pessoa';
+import { PessoasProvider } from '../../database/providers/pessoas';
 import { validation } from '../../shared/middleware';
 
 interface IQueryProps {
@@ -19,8 +19,8 @@ export const getAllValidation = validation((getSchema) => ({
 }));
 
 export const getAll = async (req: Request<{}, {}, {}, IQueryProps>, res: Response) => {
-  const result = await PessoaProvider.getAll(req.query.page || 1, req.query.limit || 7, req.query.filter || '');
-  const count = await PessoaProvider.count(req.query.filter);
+  const result = await PessoasProvider.getAll(req.query.page || 1, req.query.limit || 7, req.query.filter || '');
+  const count = await PessoasProvider.count(req.query.filter);
 
   if (result instanceof Error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({

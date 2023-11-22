@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import * as yup from 'yup';
-import { PessoaProvider } from '../../database/providers/pessoa';
+import { PessoasProvider } from '../../database/providers/pessoas';
 import { validation } from '../../shared/middleware';
 import { IPessoa } from '../../database/models';
 
@@ -16,7 +16,7 @@ export const createValidation = validation(get => ({
 }));
 
 export const create = async (req: Request<{}, {}, IBodyProps>, res: Response) => {
-  const result = await PessoaProvider.create(req.body);
+  const result = await PessoasProvider.create(req.body);
 
   if (result instanceof Error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
