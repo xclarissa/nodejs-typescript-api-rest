@@ -16,10 +16,8 @@ describe('Pessoas - Update', () => {
       email: 'mariaj@gmail.com',
       cidadeId: 2
     });
-    
+
     expect(updateResponse.statusCode).toEqual(StatusCodes.NO_CONTENT);
-    expect(updateResponse.body).toHaveProperty('nomeCompleto');
-    
 
   });
 });
