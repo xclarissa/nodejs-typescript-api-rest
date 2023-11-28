@@ -20,5 +20,7 @@ router.post('/pessoas', PessoaController.createValidation, PessoaController.crea
 router.put('/pessoas/:id', PessoaController.updateByIdValidation, PessoaController.updateById);
 router.delete('/pessoas/:id', PessoaController.deleteValidation, PessoaController.deleteById);
 
+// router.post('/cadastrar', PessoaController.createValidation, PessoaController.create);
+// router.post('/entrar', PessoaController.createValidation, PessoaController.create);
 
 export { router };
