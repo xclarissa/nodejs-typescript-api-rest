@@ -15,10 +15,10 @@ router.put('/cidades/:id', CidadesController.updateByIdValidation, CidadesContro
 router.delete('/cidades/:id', CidadesController.deleteValidation, CidadesController.deleteById);
 
 router.get('/pessoas', PessoaController.getAllValidation, PessoaController.getAll);
-router.get('/pessoas:id', PessoaController.getByIdValidation, PessoaController.getById);
+router.get('/pessoas/:id', PessoaController.getByIdValidation, PessoaController.getById);
 router.post('/pessoas', PessoaController.createValidation, PessoaController.create);
-router.put('/pessoas:id', PessoaController.updateByIdValidation, PessoaController.updateById);
-router.delete('/pessoas:id', PessoaController.deleteValidation, PessoaController.deleteById);
+router.put('/pessoas/:id', PessoaController.updateByIdValidation, PessoaController.updateById);
+router.delete('/pessoas/:id', PessoaController.deleteValidation, PessoaController.deleteById);
 
 
 export { router };

@@ -18,7 +18,8 @@ export async function up(knex: Knex) {
         .onUpdate('CASCADE')
         .onDelete('RESTRICT');
 
-      table.comment('Tabela usada para armazenar pessoas no sistema.');
+
+      table.comment('Tabela usada para armazenar pessoas do sistema.');
     })
     .then(() => {
       console.log(`# Created table ${ETableNames.pessoa}`);
