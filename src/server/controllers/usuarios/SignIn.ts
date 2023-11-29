@@ -4,6 +4,7 @@ import * as yup from 'yup';
 import { UsuariosProvider } from '../../database/providers/usuario';
 import { validation } from '../../shared/middleware';
 import { IUsuario } from '../../database/models';
+import { PasswordCrypto } from '../../shared/services/PasswordCrypto';
 
 interface IBodyProps extends Omit<IUsuario, 'id' | 'nome'> { }
 
@@ -20,7 +21,6 @@ export const signInValidation = validation(get => ({
 export const signIn = async (req: Request<{}, {}, IBodyProps>, res: Response) => {
   const { email, senha } = req.body;
 
-
   const result = await UsuariosProvider.getByEmail(email);
   if (result instanceof Error) {
     return res.status(StatusCodes.UNAUTHORIZED).json({
@@ -30,7 +30,8 @@ export const signIn = async (req: Request<{}, {}, IBodyProps>, res: Response) =>
     });
   }
 
-  if (senha !== result.senha) {
+  const passwordMatch = PasswordCrypto.verifyPassword(senha, result.senha);
+  if (!passwordMatch) {
     return res.status(StatusCodes.UNAUTHORIZED).json({
       errors: {
         default: 'Email ou senha inválidos'
