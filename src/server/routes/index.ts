@@ -20,7 +20,7 @@ router.get('/pessoas', ensureAuthenticated, PessoaController.getAllValidation, P
 router.get('/pessoas/:id', ensureAuthenticated, PessoaController.getByIdValidation, PessoaController.getById);
 router.post('/pessoas', ensureAuthenticated, PessoaController.createValidation, PessoaController.create);
 router.put('/pessoas/:id', ensureAuthenticated, PessoaController.updateByIdValidation, PessoaController.updateById);
-router.delete('/pessoas/:id', ensureAuthenticated, PessoaController.deleteValidation, PessoaController.deleteById); 
+router.delete('/pessoas/:id', ensureAuthenticated, PessoaController.deleteValidation, PessoaController.deleteById);
 
 router.post('/entrar', UsuariosController.signInValidation, UsuariosController.signIn);
 router.post('/cadastrar', UsuariosController.signUpValidation, UsuariosController.signUp);
