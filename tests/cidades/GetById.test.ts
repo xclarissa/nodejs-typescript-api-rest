@@ -1,10 +1,31 @@
 import { StatusCodes } from 'http-status-codes';
 import { testServer } from './../jest.setup';
 describe('Cidades - Get by id', () => {
-  it('should get record by id', async () => {
-    const response = await testServer.post('/cidades').send({
-      nome: 'Recife'
+  let accessToken = '';
+  beforeAll(async () => {
+    const email = 'getById-cidades@gmail.com';
+    await testServer.post('/cadastrar').send({
+      nome: 'teste delete',
+      email,
+      senha: 'Senha@12345'
     });
+
+    const signInResponse = await testServer.post('/entrar').send({
+      email,
+      senha: 'P@123456'
+    });
+
+    accessToken = signInResponse.body.accessToken;
+
+  });
+
+  it('should get record by id', async () => {
+    const response = await testServer
+      .post('/cidades')
+      .set({ Authorization: `Bearer ${accessToken}` })
+      .send({
+        nome: 'Recife'
+      });
 
     expect(response.statusCode).toEqual(StatusCodes.CREATED);
 
