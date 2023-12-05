@@ -1,6 +1,6 @@
+import { knex } from 'knex';
 import 'dotenv/config';
 import pg from 'pg';
-import { knex } from 'knex';
 import { development, production, test } from './Environment';
 
 if (process.env.NODE_ENV === 'production') {
