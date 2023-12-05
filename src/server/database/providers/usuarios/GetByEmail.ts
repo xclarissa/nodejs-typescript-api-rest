@@ -1,6 +1,6 @@
 import { ETableNames } from '../../ETableNames';
-import { Knex } from '../../knex';
 import { IUsuario } from '../../models';
+import { Knex } from '../../knex';
 
 export const getByEmail = async (email: string): Promise<IUsuario | Error> => {
   try {
@@ -12,9 +12,8 @@ export const getByEmail = async (email: string): Promise<IUsuario | Error> => {
     if (result) return result;
 
     return new Error('Registro não encontrado');
-
   } catch (error) {
     console.log(error);
-    return new Error('Erro ao consultar registro');
+    return new Error('Erro ao consultar o registro');
   }
 };

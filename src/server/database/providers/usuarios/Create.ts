@@ -1,7 +1,7 @@
-import { PasswordCrypto } from '../../../shared/services/PasswordCrypto';
+import { PasswordCrypto } from '../../../shared/services';
 import { ETableNames } from '../../ETableNames';
-import { Knex } from '../../knex';
 import { IUsuario } from '../../models';
+import { Knex } from '../../knex';
 
 export const create = async (usuario: Omit<IUsuario, 'id'>): Promise<number | Error> => {
   try {
@@ -16,9 +16,8 @@ export const create = async (usuario: Omit<IUsuario, 'id'>): Promise<number | Er
     }
 
     return new Error('Erro ao cadastrar o registro');
-
   } catch (error) {
     console.log(error);
-    return new Error('Erro ao cadastrar registro');
+    return new Error('Erro ao cadastrar o registro');
   }
 };

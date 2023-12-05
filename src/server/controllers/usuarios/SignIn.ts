@@ -22,6 +22,7 @@ export const signInValidation = validation(get => ({
 export const signIn = async (req: Request<{}, {}, IBodyProps>, res: Response) => {
   const { email, senha } = req.body;
 
+
   const usuario = await UsuariosProvider.getByEmail(email);
   if (usuario instanceof Error) {
     return res.status(StatusCodes.UNAUTHORIZED).json({
